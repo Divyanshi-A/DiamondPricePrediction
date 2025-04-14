@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Data Insights</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Diamond Insights</h2>
+            <div class="sidebar-content">
+                <p>This application uses machine learning to predict diamond prices based on various characteristics.</p>
+                <div class="sidebar-section">
+                    <h3>About These Visualizations</h3>
+                    <ul>
+                        <li><strong>Model Comparison:</strong> Performance metrics of different models</li>
+                        <li><strong>Price Distribution:</strong> Shows how diamond prices are distributed</li>
+                        <li><strong>Pairplot:</strong> Relationships between different features</li>
+                        <li><strong>Correlation Heatmap:</strong> Shows which features are related</li>
+                        <li><strong>Feature Importance:</strong> Shows which features impact price most</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="credits">
+                <p>© 2025 Diamond Predictor</p>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="container">
+                <h1>Data Insights & Visualizations</h1>
+                <p>Explore the relationships between diamond characteristics and prices</p>
+                
+                <!-- New Model Comparison Section -->
+                <div class="visualization-section">
+                    <h2>Model Performance Comparison</h2>
+                    <div class="model-comparison">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Random Forest</th>
+                                    <th>Linear Regression</th>
+                                    <th>Neural Network</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="metric-name">MAE</td>
+                                    <td class="best-score">270.58</td>
+                                    <td>737.15</td>
+                                    <td>328.37</td>
+                                </tr>
+                                <tr>
+                                    <td class="metric-name">RMSE</td>
+                                    <td class="best-score">303,623.58</td>
+                                    <td>1,288,705.48</td>
+                                    <td>377,250.50</td>
+                                </tr>
+                                <tr>
+                                    <td class="metric-name">R²</td>
+                                    <td class="best-score">0.981</td>
+                                    <td>0.919</td>
+                                    <td>0.976</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="metrics-explanation">
+                        <h3>Understanding the Metrics</h3>
+                        <p><strong>MAE (Mean Absolute Error):</strong> Average absolute difference between predicted and actual prices. Lower is better.</p>
+                        <p><strong>RMSE (Root Mean Square Error):</strong> Root of the average squared differences. More sensitive to large errors. Lower is better.</p>
+                        <p><strong>R² (R-squared):</strong> Proportion of variance explained by the model. Closer to 1.0 is better.</p>
+                        <p>Based on these metrics, the <strong>Random Forest</strong> model performs best overall and was selected for this application.</p>
+                    </div>
+                </div>
+                
+                <div class="visualization-section">
+                    <h2>Price Distribution</h2>
+                    <img src="{{ url_for('static', filename='price_distribution.png') }}" alt="Price Distribution">
+                </div>
+                
+                <div class="visualization-section">
+                    <h2>Pairplot of Features</h2>
+                    <img src="{{ url_for('static', filename='pairplot.png') }}" alt="Pairplot">
+                </div>
+                
+                <div class="visualization-section">
+                    <h2>Correlation Heatmap</h2>
+                    <img src="{{ url_for('static', filename='correlation_heatmap.png') }}" alt="Correlation Heatmap">
+                </div>
+                
+                <div class="visualization-section">
+                    <h2>Feature Importance (SHAP)</h2>
+                    <img src="{{ url_for('static', filename='shap_summary.png') }}" alt="Feature Importance">
+                </div>
+                
+                <a href="/" class="back-btn">Back to Prediction</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

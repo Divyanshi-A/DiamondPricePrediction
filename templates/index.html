@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Diamond Insights</h2>
+            <div class="sidebar-content">
+                <p>This application uses machine learning to predict diamond prices based on various characteristics.</p>
+                <div class="sidebar-section">
+                    <h3>Characteristics Guide</h3>
+                    <ul>
+                        <li><strong>Carat:</strong> Weight of the diamond (0.2-5.0)</li>
+                        <li><strong>Cut:</strong> Quality of the cut (Fair to Ideal)</li>
+                        <li><strong>Color:</strong> Diamond color grade (D to J)</li>
+                        <li><strong>Clarity:</strong> How clear the diamond is (I1 to IF)</li>
+                        <li><strong>Depth:</strong> Total depth percentage (43-79)</li>
+                        <li><strong>Table:</strong> Width of top relative to widest point (43-95)</li>
+                        <li><strong>x, y, z:</strong> Diamond dimensions in mm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="credits">
+                <p>© 2025 Diamond Predictor</p>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="container">
+                <h1>Diamond Price Predictor</h1>
+                <p>Enter the diamond characteristics to estimate its price.</p>
+                
+                <form action="/predict" method="POST">
+                    <label for="carat">Carat Weight:</label>
+                    <input type="number" step="0.01" id="carat" name="carat" required>
+                    
+                    <label for="cut">Cut Quality:</label>
+                    <select id="cut" name="cut" required>
+                        <option value="Ideal">Ideal</option>
+                        <option value="Premium">Premium</option>
+                        <option value="Very Good">Very Good</option>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
+                    </select>
+                    
+                    <label for="color">Color Grade:</label>
+                    <select id="color" name="color" required>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                        <option value="H">H</option>
+                        <option value="I">I</option>
+                        <option value="J">J</option>
+                    </select>
+                    
+                    <label for="clarity">Clarity:</label>
+                    <select id="clarity" name="clarity" required>
+                        <option value="IF">IF</option>
+                        <option value="VVS1">VVS1</option>
+                        <option value="VVS2">VVS2</option>
+                        <option value="VS1">VS1</option>
+                        <option value="VS2">VS2</option>
+                        <option value="SI1">SI1</option>
+                        <option value="SI2">SI2</option>
+                        <option value="I1">I1</option>
+                    </select>
+                    
+                    <label for="depth">Depth %:</label>
+                    <input type="number" step="0.1" id="depth" name="depth" required>
+                    
+                    <label for="table">Table %:</label>
+                    <input type="number" step="0.1" id="table" name="table" required>
+                    
+                    <label for="x">Length (mm):</label>
+                    <input type="number" step="0.01" id="x" name="x" required>
+                    
+                    <label for="y">Width (mm):</label>
+                    <input type="number" step="0.01" id="y" name="y" required>
+                    
+                    <label for="z">Depth (mm):</label>
+                    <input type="number" step="0.01" id="z" name="z" required>
+                    
+                    <button type="submit">Predict Price</button>
+                </form>
+                
+                {% if prediction %}
+                <div class="prediction-result">
+                    <h2>Estimated Price: {{ prediction }}</h2>
+                </div>
+                {% endif %}
+                
+                <a href="/visualizations" class="view-visuals-btn">View Data Insights</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
